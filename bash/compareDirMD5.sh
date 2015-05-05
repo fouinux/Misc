@@ -2,6 +2,11 @@
 # Author : gfouilleul
 # Usage : $0 [--file] dir1 dir2
 
+# Define color for term
+cDefault="\e[0m"
+cRed="\e[0;31"
+cGreen="\e[0;32"
+
 # file Option : print output of `file -b $file` if files are differents
 optFile=false
 
@@ -39,7 +44,7 @@ if [ ! -d $dir2 ] ; then
 	exit
 fi
 
-# Foreach file in dir 1
+# Foreach file in dir1
 for file in `find $dir1` ; do
 	# Sub string
 	short=${file#$dir1}
@@ -55,7 +60,7 @@ for file in `find $dir1` ; do
 		
 		# File differents
 		if [ $md5f1 != $md5f2 ] ; then
-			echo -e "\e[0;31mDiff\e[0m $file"
+			echo -e $cRed "Diff" $cDefault " $file"
 			
 			# Opt file
 			if [ $optFile = true ] ; then
@@ -64,7 +69,7 @@ for file in `find $dir1` ; do
 			fi
 		fi
 	elif [ -f $file ] ; then
-		echo -e "\e[0;32mAlone\e[0m $file"
+		echo -e $cGreen "Alone" $cDefault " $file"
 	fi
 done
 
