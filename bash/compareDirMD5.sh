@@ -4,8 +4,8 @@
 
 # Define color for term
 cDefault="\e[0m"
-cRed="\e[0;31"
-cGreen="\e[0;32"
+cRed="\e[0;31m"
+cGreen="\e[0;32m"
 
 # file Option : print output of `file -b $file` if files are differents
 optFile=false
@@ -60,7 +60,7 @@ for file in `find $dir1` ; do
 		
 		# File differents
 		if [ $md5f1 != $md5f2 ] ; then
-			echo -e $cRed "Diff" $cDefault " $file"
+			echo -e $cRed"Diff"$cDefault" $file"
 			
 			# Opt file
 			if [ $optFile = true ] ; then
@@ -69,7 +69,7 @@ for file in `find $dir1` ; do
 			fi
 		fi
 	elif [ -f $file ] ; then
-		echo -e $cGreen "Alone" $cDefault " $file"
+		echo -e $cGreen"Alone"$cDefault" $file"
 	fi
 done
 

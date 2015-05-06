@@ -4,6 +4,7 @@
 hello="Hello `whoami`, you are on `hostname`"
 
 # Disk section
+# See df | tail -$((`df | wc -l` - 1))
 disk="Disk usage :\n"
 disk="$disk`df -h /dev/sdb1 /dev/sdc1 | awk 'NR == 2, NR == NF {print $6,\" => \                                                                                                                                                             ", $5}'`"
 
